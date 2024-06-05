@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBC News</title>
+    <style>
+        .news-item { margin-bottom: 20px; }
+        .news-item img { max-width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>Latest BBC News</h1>
+    {% for article in news %}
+    <div class="news-item">
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.summary }}</p>
+        <a href="{{ article.link }}">Read more</a>
+        {% if article.media_content %}
+        <img src="{{ article.media_content[0]['url'] }}" alt="News image">
+        {% endif %}
+    </div>
+    {% endfor %}
+</body>
+</html>
